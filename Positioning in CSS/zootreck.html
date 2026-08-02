@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= <style>
+    <title>Document</title>
+     <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Fixed Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: darkgreen;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+            z-index: 1000;
+        }
+        .container {
+            margin-top: 80px;
+            padding: 20px;
+        }
+
+        /* Relative Box */
+        .rescue-area {
+            position: relative;
+            width: 400px;
+            height: 220px;
+            border: 3px solid green;
+            background: #d9fdd3;
+            margin-bottom: 30px;
+        }
+
+        /* Absolute Box */
+        .animal {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: orange;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        /* Sticky Note */
+        .sticky-note {
+            position: sticky;
+            top: 70px;
+            background: gold;
+            padding: 10px;
+            font-weight: bold;
+            border: 2px solid #444;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            height: 900px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Zoo Rescue Tracker
+    </header>
+
+    <div class="container">
+
+        <!-- Sticky Note -->
+        <div class="sticky-note">
+            Rescue Status: 3 Animals Waiting
+        </div>
+
+        <!-- Relative and Absolute Position -->
+        <div class="rescue-area">
+            <h2 style="padding:15px;">Rescue Zone</h2>
+
+            <div class="animal">
+                🐘 Elephant Rescued
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <h3>Daily Rescue Report</h3>
+
+            <p>
+                The zoo rescue team works every day to protect injured and
+                endangered animals. CSS positioning helps us place important
+                information exactly where it should appear on the webpage.
+            </p>
+
+            <p>
+                Scroll down to see that the header remains fixed and the rescue
+                status note stays sticky while reading the report.
+            </p>
+
+            <p>
+                More rescue updates will appear here as animals are safely
+                transported and treated by the rescue team.
+            </p>
+
+        </div>
+
+    </div>
+
+
+</body>
+</html>
