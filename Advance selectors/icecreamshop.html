@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #fff8dc;
+            text-align: center;
+        }
+
+        h1{
+            color: brown;
+        }
+
+        .menu{
+            width: 400px;
+            margin: auto;
+            background-color: white;
+            border: 2px solid brown;
+            padding: 20px;
+        }
+
+        /* Child Selector */
+        .menu > h2{
+            color: darkred;
+        }
+
+        /* Menu Items */
+        li{
+            list-style: none;
+            padding: 10px;
+            margin: 8px;
+            background-color: pink;
+            border-radius: 5px;
+        }
+
+        /* First Item */
+        li:first-child{
+            background-color: gold;
+            font-weight: bold;
+        }
+
+        /* Hover Effect */
+        li:hover{
+            background-color: lightgreen;
+            cursor: pointer;
+        }
+
+        /* First Letter */
+        p::first-letter{
+            font-size: 30px;
+            color: red;
+            font-weight: bold;
+        }
+
+        /* Adjacent Sibling Selector */
+        h2 + p{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Ice Cream Shop Menu</h1>
+
+<div class="menu">
+
+    <h2>Today's Special</h2>
+
+    <p>Enjoy our delicious ice cream made with fresh ingredients.</p>
+
+    <ul>
+        <li>Chocolate - Rs.250</li>
+        <li>Vanilla - Rs.200</li>
+        <li>Strawberry - Rs.220</li>
+        <li>Mango - Rs.230</li>
+        <li>Cookies & Cream - Rs.280</li>
+    </ul>
+
+</div>
+
+</body>
+</html>
