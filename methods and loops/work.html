@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Methods and Loops</h2>
+        <div class="subtitle">Introduction to Methods, Loops and Switches in JavaScript[cite: 11]</div>
+        
+        <p style="margin-bottom: 20px; font-size: 0.9rem; color: #555;">
+            Tinu wants a web page that lists numbers, picks a random number and shows what day it is[cite: 11]. You will build it with a loop and two methods[cite: 11]. Time: about 20 minutes[cite: 11].
+        </p>
+
+        
+        <div class="section">
+            <h3 style="font-size: 1rem; color: #2c3e50; margin-bottom: 8px;">1. List Numbers (Using a Loop)</h3>
+            <button id="listNumbersBtn">List Numbers (1 to 7)</button>
+            <div id="numberOutput" class="output">Numbered list will appear here...</div>
+        </div>
+
+        
+        <div class="section">
+            <h3 style="font-size: 1rem; color: #2c3e50; margin-bottom: 8px;">2. Random Day Picker (Using Methods & Switch)</h3>
+            <button id="pickDayBtn">Pick Random Day</button>
+            <div id="dayOutput" class="output">Random day result will appear here...</div>
+        </div>
+    </div>
+
+    <script>
+        
+        function listNumbersMethod() {
+            let resultText = "Generated Number List:\n";
+            
+            for (let i = 1; i <= 7; i++) {
+                resultText += `Day Index: ${i}\n`;
+            }
+            return resultText;
+        }
+
+       
+        function getRandomDayMethod() {
+            
+            let randomNum = Math.floor(Math.random() * 7) + 1;
+            let dayName = "";
+
+            
+            switch (randomNum) {
+                case 1:
+                    dayName = "Monday";
+                    break;
+                case 2:
+                    dayName = "Tuesday";
+                    break;
+                case 3:
+                    dayName = "Wednesday";
+                    break;
+                case 4:
+                    dayName = "Thursday";
+                    break;
+                case 5:
+                    dayName = "Friday";
+                    break;
+                case 6:
+                    dayName = "Saturday";
+                    break;
+                case 7:
+                    dayName = "Sunday";
+                    break;
+                default:
+                    dayName = "Unknown Day";
+            }
+
+            return `Picked Random Number: ${randomNum} \u2192 Corresponding Day: ${dayName}`;
+        }
+
+        
+        document.getElementById('listNumbersBtn').addEventListener('click', function() {
+            let output = listNumbersMethod();
+            document.getElementById('numberOutput').textContent = output;
+        });
+
+        
+        document.getElementById('pickDayBtn').addEventListener('click', function() {
+            let output = getRandomDayMethod();
+            document.getElementById('dayOutput').textContent = output;
+        });
+    </script>
+</body>
+</html>
