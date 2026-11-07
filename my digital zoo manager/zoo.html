@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>My Digital Zoo Manager</h2>
+        <div class="subtitle">Introduction to HTML DOM[cite: 8]</div>
+        
+        <p style="margin-bottom: 20px; font-size: 0.9rem; color: #555;">
+            In this assignment, you will build a My Digital Zoo Manager webpage using HTML, CSS, and JavaScript[cite: 8]. You will create animal zones inside a zoo container, use JavaScript to explore the DOM tree, identify parent, child, and sibling nodes, check different node types, and update the webpage content and styles through DOM methods[cite: 8].
+        </p>
+
+        
+        <div id="zooContainer" class="zoo-container">
+            <h3 id="zooTitle">Main Zoo Area</h3>
+            <div class="zone" id="zone1">
+                <strong>Zone 1:</strong> Lions and Tigers
+            </div>
+            <div class="zone" id="zone2">
+                <strong>Zone 2:</strong> Elephants and Giraffes
+            </div>
+            <div class="zone" id="zone3">
+                <strong>Zone 3:</strong> Penguins and Polar Bears
+            </div>
+        </div>
+
+        
+        <div>
+            <button id="exploreDomBtn">Explore DOM Tree</button>
+            <button id="updateStylesBtn">Update Styles & Content</button>
+        </div>
+
+        <div id="domOutput" class="output">DOM exploration results will appear here...</div>
+    </div>
+
+    <script>
+        
+        document.getElementById('exploreDomBtn').addEventListener('click', function() {
+            const zone2 = document.getElementById('zone2');
+            
+            // Parent node
+            const parentNode = zone2.parentNode;
+            
+           
+            const firstChild = zone2.firstElementChild;
+            const nextSibling = zone2.nextElementSibling;
+            const prevSibling = zone2.previousElementSibling;
+            
+            
+            const nodeType = zone2.nodeType; 
+            const nodeName = zone2.nodeName; 
+
+            let report = `DOM Tree Exploration Report:\n`;
+            report += `- Target Element Node Name: ${nodeName} (Node Type: ${nodeType})\n`;
+            report += `- Parent Container ID: ${parentNode.id}\n`;
+            report += `- Previous Sibling ID: ${prevSibling ? prevSibling.id : 'None'}\n`;
+            report += `- Next Sibling ID: ${nextSibling ? nextSibling.id : 'None'}\n`;
+            report += `- First Child Element inside Zone 2: ${firstChild.tagName} (${firstChild.textContent.trim()})`;
+
+            document.getElementById('domOutput').textContent = report;
+        });
+
+        
+        document.getElementById('updateStylesBtn').addEventListener('click', function() {
+            const zooTitle = document.getElementById('zooTitle');
+            const zone1 = document.getElementById('zone1');
+            const container = document.getElementById('zooContainer');
+
+            
+            zooTitle.textContent = "🌟 Safari Park & Wildlife Sanctuary 🌟";
+            
+            // Update styles through DOM methods
+            container.style.backgroundColor = "#eafaf1";
+            container.style.borderColor = "#27ae60";
+            
+            zone1.style.backgroundColor = "#d4efdf";
+            zone1.style.color = "#145a32";
+            zone1.style.fontWeight = "bold";
+
+            document.getElementById('domOutput').textContent = "Successfully updated zoo title, container theme, and zone styles using DOM methods!";
+        });
+    </script>
+</body>
+</html>
