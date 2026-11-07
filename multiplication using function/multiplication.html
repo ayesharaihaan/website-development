@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Multiplication Using Functions</h2>
+        <div class="subtitle">Introduction to Functions in JavaScript[cite: 12]</div>
+        
+        <p style="margin-bottom: 20px; font-size: 0.9rem; color: #555;">
+            In this project, you will be performing simple multiplication operations by using the function and function parameters concept learnt in the class[cite: 12].
+        </p>
+
+        <div class="form-group">
+            <label for="num1">Enter First Number:</label>
+            <input type="number" id="num1" placeholder="e.g. 5">
+        </div>
+
+        <div class="form-group">
+            <label for="num2">Enter Second Number:</label>
+            <input type="number" id="num2" placeholder="e.g. 4">
+        </div>
+
+        <button id="multiplyBtn">Multiply Numbers</button>
+
+        <div id="resultOutput" class="output hidden"></div>
+    </div>
+
+    <script>
+        
+        function multiplyNumbers(a, b) {
+            return a * b;
+        }
+
+        document.getElementById('multiplyBtn').addEventListener('click', function() {
+            let val1 = parseFloat(document.getElementById('num1').value);
+            let val2 = parseFloat(document.getElementById('num2').value);
+            let resultOutput = document.getElementById('resultOutput');
+
+            if (isNaN(val1) || isNaN(val2)) {
+                resultOutput.style.borderColor = "#e74c3c";
+                resultOutput.style.color = "#c0392b";
+                resultOutput.textContent = "Please enter valid numbers in both fields.";
+                resultOutput.classList.remove('hidden');
+                return;
+            }
+
+            
+            let product = multiplyNumbers(val1, val2);
+
+            
+            resultOutput.style.borderColor = "#2980b9";
+            resultOutput.style.color = "#333";
+            resultOutput.textContent = `Result: ${val1} \u00d7 ${val2} = ${product}`;
+            resultOutput.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
