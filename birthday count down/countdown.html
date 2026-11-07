@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>My Birthday Countdown Checker</h2>
+        <div class="subtitle">Brief on JavaScript[cite: 7]</div>
+        
+        <p style="margin-bottom: 20px; font-size: 0.9rem; color: #666;">
+            In this assignment, you will build a colourful Birthday Countdown Checker using HTML, CSS, and JavaScript[cite: 7]. The webpage will calculate how many days are left for a birthday, display a fun message, and print a short countdown review[cite: 7]. Students will practise JavaScript values, conditions, dates, loops, and string-building while creating an engaging birthday-themed UI[cite: 7].
+        </p>
+
+        <div class="form-group">
+            <label for="birthdayDate">Select Your Next Birthday:</label>
+            <input type="date" id="birthdayDate">
+        </div>
+
+        <button id="checkCountdownBtn">Check Countdown</button>
+
+
+        <div id="resultCard" class="result-card hidden">
+            <h3 id="funMessage">🎉 Let's Celebrate!</h3>
+            <p><strong>Days Remaining:</strong> <span id="daysLeft"></span></p>
+            <p><strong>Countdown Review:</strong></p>
+            <p id="countdownReview" style="background: white; padding: 10px; border-radius: 4px; font-family: monospace; font-size: 0.85rem; white-space: pre-line;"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('checkCountdownBtn').addEventListener('click', function() {
+            const birthdayInput = document.getElementById('birthdayDate').value;
+            const resultCard = document.getElementById('resultCard');
+            const daysLeftSpan = document.getElementById('daysLeft');
+            const funMessage = document.getElementById('funMessage');
+            const countdownReview = document.getElementById('countdownReview');
+
+            if (!birthdayInput) {
+                alert('Please select a birthday date!');
+                return;
+            }
+
+        
+            const today = new Date();
+            const targetDate = new Date(birthdayInput);
+            
+            
+            today.setHours(0, 0, 0, 0);
+            targetDate.setHours(0, 0, 0, 0);
+
+            const timeDiff = targetDate - today;
+            const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+            let message = "";
+            let reviewString = "";
+
+            // JavaScript Conditions
+            if (daysLeft < 0) {
+                message = "🎂 Hope you had an amazing birthday! Time to look forward to the next one!";
+                daysLeftSpan.textContent = "Passed already this year";
+            } else if (daysLeft === 0) {
+                message = "🥳 HAPPY BIRTHDAY! It's your special day today!";
+                daysLeftSpan.textContent = "0 days (Today!)";
+            } else if (daysLeft <= 7) {
+                message = "🎈 Almost there! Get the cake ready!";
+                daysLeftSpan.textContent = `${daysLeft} day(s)`;
+            } else {
+                message = "🚀 The countdown is on! Keep shining!";
+                daysLeftSpan.textContent = `${daysLeft} day(s)`;
+            }
+
+            // JavaScript Loops & String-Building
+            if (daysLeft >= 0 && daysLeft <= 30) {
+                reviewString = "Milestone Checklist:\n";
+                
+                for (let i = Math.min(daysLeft, 5); i >= 1; i--) {
+                    reviewString += `[ ] Only ${i} milestone step(s) closer to the big party!\n`;
+                }
+                reviewString += "✨ Party mode activated!";
+            } else {
+                reviewString = "Review Summary:\n";
+                for (let i = 3; i >= 1; i--) {
+                    reviewString += `> Status check ${i}: Countdown active and running smoothly.\n`;
+                }
+                reviewString += "✨ Stay excited for your special day!";
+            }
+
+            funMessage.textContent = message;
+            countdownReview.textContent = reviewString;
+            resultCard.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
