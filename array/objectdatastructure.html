@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Data Structure And Array!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Object Data Structure and Array</h2>
+        <div class="subtitle">Introduction to Array and call stack[cite: 9]</div>
+        
+        <p style="margin-bottom: 20px; font-size: 0.9rem; color: #555;">
+            In this project, you will be Creating variables with objects and as array and display them by using objects keys and also by index value of array and by using join and pop function display whole array[cite: 9].
+        </p>
+
+        
+        <div class="section">
+            <h3 style="font-size: 1rem; color: #2c3e50; margin-bottom: 8px;">1. Object Data Structure</h3>
+            <button id="showObjectBtn">Display Object Properties</button>
+            <div id="objectOutput" class="output">Object details will appear here...</div>
+        </div>
+
+        
+        <div class="section">
+            <h3 style="font-size: 1rem; color: #2c3e50; margin-bottom: 8px;">2. Array Operations</h3>
+            <button id="showIndexBtn">Display by Index</button>
+            <button id="showJoinBtn">Display Whole Array (join)</button>
+            <button id="showPopBtn">Display after pop()</button>
+            <div id="arrayOutput" class="output">Array results will appear here...</div>
+        </div>
+    </div>
+
+    <script>
+        
+        const studentObject = {
+            name: "Alex Johnson",
+            course: "Web Development",
+            id: "STU-9842",
+            semester: "Fall 2026"
+        };
+
+        let subjectsArray = ["HTML", "CSS", "JavaScript", "DOM", "Call Stack"];
+
+        
+        document.getElementById('showObjectBtn').addEventListener('click', function() {
+            let output = `Student Details (using object keys):\n`;
+            output += `- Name: ${studentObject.name}\n`;
+            output += `- Course: ${studentObject['course']}\n`;
+            output += `- Student ID: ${studentObject.id}\n`;
+            output += `- Semester: ${studentObject['semester']}`;
+
+            document.getElementById('objectOutput').textContent = output;
+        });
+
+        
+        document.getElementById('showIndexBtn').addEventListener('click', function() {
+            let output = `Array Elements (by index value):\n`;
+            output += `Index 0: ${subjectsArray[0]}\n`;
+            output += `Index 2: ${subjectsArray[2]}\n`;
+            output += `Index 4: ${subjectsArray[4]}`;
+
+            document.getElementById('arrayOutput').textContent = output;
+        });
+
+        
+        document.getElementById('showJoinBtn').addEventListener('click', function() {
+            let joinedString = subjectsArray.join(" > ");
+            let output = `Whole Array using join():\n${joinedString}`;
+            document.getElementById('arrayOutput').textContent = output;
+        });
+
+        
+        document.getElementById('showPopBtn').addEventListener('click', function() {
+            
+            let tempArray = [...subjectsArray];
+            let poppedElement = tempArray.pop();
+            
+            let output = `Array after pop() function (Removed: "${poppedElement}"):\n`;
+            output += tempArray.join(", ");
+
+            document.getElementById('arrayOutput').textContent = output;
+        });
+    </script>
+</body>
+</html>
