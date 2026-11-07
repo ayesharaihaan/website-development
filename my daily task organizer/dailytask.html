@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>My Daily Task Organizer</h2>
+        <div class="subtitle">Array sorting and mapping in JavaScript[cite: 5]</div>
+        
+        <p style="margin-bottom: 20px; font-size: 0.9rem; color: #555;">
+            In this assignment, you will build a Daily Task Organizer webpage using JavaScript array methods[cite: 5]. You will sort task names, reverse the list, sort task times, and add labels to every time value[cite: 5].
+        </p>
+
+        <!-- 1. Sort Task Names & Reverse -->
+        <div class="section">
+            <h3 style="font-size: 1rem; color: #2c3e50; margin-bottom: 8px;">1. Task Names Management</h3>
+            <p style="font-size: 0.85rem; color: #666; margin-bottom: 8px;">Initial Tasks: <span id="initialTasks"></span></p>
+            <button id="sortNamesBtn">Sort Task Names (A-Z)</button>
+            <button id="reverseNamesBtn">Reverse List</button>
+            <div id="namesOutput" class="output">Task names output will appear here...</div>
+        </div>
+
+        <!-- 2. Sort Task Times & Add Labels (Mapping) -->
+        <div class="section">
+            <h3 style="font-size: 1rem; color: #2c3e50; margin-bottom: 8px;">2. Task Times & Mapping</h3>
+            <p style="font-size: 0.85rem; color: #666; margin-bottom: 8px;">Initial Times (minutes): <span id="initialTimes"></span></p>
+            <button id="sortTimesBtn">Sort Task Times (Ascending)</button>
+            <button id="mapLabelsBtn">Add Labels (Mapping)</button>
+            <div id="timesOutput" class="output">Task times output will appear here...</div>
+        </div>
+    </div>
+
+    <script>
+        // Initial Data Arrays
+        let taskNames = ["Review Code", "Design Layout", "Write Documentation", "Test Application", "Deploy Project"];
+        let taskTimes = [45, 15, 60, 30, 90];
+
+        // Display initial values on load
+        document.getElementById('initialTasks').textContent = taskNames.join(", ");
+        document.getElementById('initialTimes').textContent = taskTimes.join(", ");
+
+        // 1. Sort Task Names Alphabetically
+        document.getElementById('sortNamesBtn').addEventListener('click', function() {
+            // Using spread operator to avoid mutating the original array directly if desired, or sort in place
+            let sortedTasks = [...taskNames].sort();
+            document.getElementById('namesOutput').textContent = `Sorted Task Names (A-Z): ${sortedTasks.join(", ")}`;
+        });
+
+        // 2. Reverse the Task List
+        document.getElementById('reverseNamesBtn').addEventListener('click', function() {
+            let reversedTasks = [...taskNames].reverse();
+            document.getElementById('namesOutput').textContent = `Reversed Task List: ${reversedTasks.join(", ")}`;
+        });
+
+        // 3. Sort Task Times (Numeric sort)
+        document.getElementById('sortTimesBtn').addEventListener('click', function() {
+            let sortedTimes = [...taskTimes].sort((a, b) => a - b);
+            document.getElementById('timesOutput').textContent = `Sorted Task Times: ${sortedTimes.join(", ")}`;
+        });
+
+        // 4. Add Labels to Every Time Value (Array .map() method)
+        document.getElementById('mapLabelsBtn').addEventListener('click', function() {
+            let labeledTimes = taskTimes.map(time => `${time} mins duration`);
+            document.getElementById('timesOutput').textContent = `Mapped Labeled Times: ${labeledTimes.join(" | ")}`;
+        });
+    </script>
+</body>
+</html>
