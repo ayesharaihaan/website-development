@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>My Text Fixer Tool</h2>
+        <div class="subtitle">JavaScript in Detail[cite: 4]</div>
+        
+        <p style="margin-bottom: 20px; font-size: 0.9rem; color: #555;">
+            In this assignment, you will build a Text Fixer Tool webpage. You will check data types, convert values, replace words in a sentence, and safely handle an error using JavaScript[cite: 4].
+        </p>
+
+        
+        <div class="section">
+            <label for="dataTypeInput">1. Check Data Type</label>
+            <input type="text" id="dataTypeInput" placeholder="Enter any value (e.g., 42, hello, true)">
+            <button id="checkTypeBtn">Check Type</button>
+            <div id="typeOutput" class="output">Data type will appear here...</div>
+        </div>
+
+        
+        <div class="section">
+            <label for="convertInput">2. Convert Value (String to Number)</label>
+            <input type="text" id="convertInput" placeholder="Enter a number string (e.g., 123.45)">
+            <button id="convertBtn">Convert & Multiply by 2</button>
+            <div id="convertOutput" class="output">Converted result will appear here...</div>
+        </div>
+
+        
+        <div class="section">
+            <label for="sentenceInput">3. Replace Words in a Sentence</label>
+            <textarea id="sentenceInput" rows="2" placeholder="Enter sentence">I love coding in JavaScript.</textarea>
+            <input type="text" id="targetWord" placeholder="Word to replace (e.g., JavaScript)" value="JavaScript">
+            <input type="text" id="replacementWord" placeholder="Replacement word (e.g., Python)" value="Python">
+            <button id="replaceBtn">Replace Word</button>
+            <div id="replaceOutput" class="output">Modified sentence will appear here...</div>
+        </div>
+
+        
+        <div class="section">
+            <label>4. Safely Handle an Error (try...catch)</label>
+            <button id="errorBtn">Run Safe Operation</button>
+            <div id="errorOutput" class="output">Error handling result will appear here...</div>
+        </div>
+    </div>
+
+    <script>
+        
+        document.getElementById('checkTypeBtn').addEventListener('click', function() {
+            let val = document.getElementById('dataTypeInput').value;
+            
+            
+            let evaluatedVal = val;
+            if (val.toLowerCase() === 'true') evaluatedVal = true;
+            else if (val.toLowerCase() === 'false') evaluatedVal = false;
+            else if (!isNaN(val) && val.trim() !== '') evaluatedVal = Number(val);
+
+            let typeResult = typeof evaluatedVal;
+            document.getElementById('typeOutput').textContent = `The input "${val}" has a data type of: ${typeResult}`;
+        });
+
+        
+        document.getElementById('convertBtn').addEventListener('click', function() {
+            let val = document.getElementById('convertInput').value;
+            let num = Number(val);
+
+            if (isNaN(num) || val.trim() === '') {
+                document.getElementById('convertOutput').textContent = `Conversion Error: "${val}" is not a valid number.`;
+            } else {
+                let multiplied = num * 2;
+                document.getElementById('convertOutput').textContent = `Converted to number: ${num} | Multiplied by 2 = ${multiplied} (Type: ${typeof num})`;
+            }
+        });
+
+        
+        document.getElementById('replaceBtn').addEventListener('click', function() {
+            let sentence = document.getElementById('sentenceInput').value;
+            let target = document.getElementById('targetWord').value;
+            let replacement = document.getElementById('replacementWord').value;
+
+            if (!target) {
+                document.getElementById('replaceOutput').textContent = 'Please specify a word to replace.';
+                return;
+            }
+
+            let regex = new RegExp(target, 'g');
+            let updatedSentence = sentence.replace(regex, replacement);
+            document.getElementById('replaceOutput').textContent = `Result: "${updatedSentence}"`;
+        });
+
+        
+        document.getElementById('errorBtn').addEventListener('click', function() {
+            try {
+                
+                let nonExistentObject = null;
+                if (!nonExistentObject) {
+                    throw new Error("Attempted to access properties of a null object!");
+                }
+                let data = nonExistentObject.someProperty;
+            } catch (error) {
+                
+                document.getElementById('errorOutput').textContent = `Caught safely via try...catch: ${error.message}`;
+            }
+        });
+    </script>
+    
+</body>
+</html>
