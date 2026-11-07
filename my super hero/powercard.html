@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>My Superhero Power Cards</h2>
+        <div class="subtitle">Classes in JavaScript[cite: 6]</div>
+        
+        <p style="margin-bottom: 20px; font-size: 0.9rem; color: #555;">
+            In this assignment, students will build an interactive My Superhero Power Cards webpage using JavaScript classes[cite: 6]. They will create a Superhero class, use a constructor to store superhero details, apply the this keyword to access object values, create multiple superhero objects, and display each hero card by calling a class method[cite: 6].
+        </p>
+
+        <button id="showHeroesBtn">Display Superhero Cards</button>
+
+        <div id="cardsContainer" class="cards-grid"></div>
+    </div>
+
+    <script>
+        // Create a Superhero class
+        class Superhero {
+            constructor(name, power, universe, powerLevel) {
+                
+                this.name = name;
+                this.power = power;
+                this.universe = universe;
+                this.powerLevel = powerLevel;
+            }
+
+            
+            renderCard() {
+                return `
+                    <div class="hero-card">
+                        <h3>${this.name}</h3>
+                        <p><strong>Power:</strong> ${this.power}</p>
+                        <p><strong>Universe:</strong> ${this.universe}</p>
+                        <p><strong>Power Level:</strong> ${this.powerLevel}</p>
+                    </div>
+                `;
+            }
+        }
+
+        document.getElementById('showHeroesBtn').addEventListener('click', function() {
+            
+            const hero1 = new Superhero("Quantum Coder", "Manipulating Time & Code", "Tech-Verse", 95);
+            const hero2 = new Superhero("Stylus Supreme", "Infinite Vector Generation", "Design Realm", 88);
+            const hero3 = new Superhero("Async Avenger", "Non-blocking Operations", "JS-Matrix", 92);
+
+            const heroes = [hero1, hero2, hero3];
+            const container = document.getElementById('cardsContainer');
+            
+            container.innerHTML = '';
+
+        
+            heroes.forEach(hero => {
+                container.innerHTML += hero.renderCard();
+            });
+        });
+    </script>
+</body>
+</html>
