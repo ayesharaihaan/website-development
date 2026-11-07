@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>School Event Data Viewer</h2>
+        <div class="subtitle">Json and JS Asynchronous[cite: 3]</div>
+        
+        <button id="loadEventBtn">Load Event Data</button>
+
+        <div id="loading" class="hidden">Loading school event data from server...</div>
+
+    
+        <div id="eventDetails" class="event-card hidden">
+            <h3 id="eventTitle"></h3>
+            <p><strong>Date:</strong> <span id="eventDate"></span></p>
+            <p><strong>Location:</strong> <span id="eventLocation"></span></p>
+            <p><strong>Description:</strong> <span id="eventDesc"></span></p>
+        </div>
+    </div>
+
+    <script>
+        const loadEventBtn = document.getElementById('loadEventBtn');
+        const loadingDiv = document.getElementById('loading');
+        const eventDetailsDiv = document.getElementById('eventDetails');
+
+        const eventTitle = document.getElementById('eventTitle');
+        const eventDate = document.getElementById('eventDate');
+        const eventLocation = document.getElementById('eventLocation');
+        const eventDesc = document.getElementById('eventDesc');
+
+        
+        function fetchSchoolEventFromServer() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+            
+                    const rawEventData = {
+                        title: "Annual Science & Tech Fair 2026",
+                        date: "November 20, 2026",
+                        location: "Main School Auditorium",
+                        description: "Showcasing student robotics projects, coding demonstrations, and interactive science experiments."
+                    };
+
+                    
+                    const jsonString = JSON.stringify(rawEventData);
+
+                    
+                    const parsedEventObject = JSON.parse(jsonString);
+
+                    resolve(parsedEventObject);
+                }, 2000); 
+            });
+        }
+
+        loadEventBtn.addEventListener('click', async function() {
+            
+            eventDetailsDiv.classList.add('hidden');
+            loadingDiv.classList.remove('hidden');
+            loadEventBtn.disabled = true;
+
+            try {
+            
+                const eventData = await fetchSchoolEventFromServer();
+
+                
+                loadingDiv.classList.add('hidden');
+                
+                eventTitle.textContent = eventData.title;
+                eventDate.textContent = eventData.date;
+                eventLocation.textContent = eventData.location;
+                eventDesc.textContent = eventData.description;
+
+                eventDetailsDiv.classList.remove('hidden');
+            } catch (error) {
+                loadingDiv.textContent = "Failed to load event data.";
+                console.error(error);
+            } finally {
+                loadEventBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
