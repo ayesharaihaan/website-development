@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Event Registration Form</h2>
+        <p style="margin-bottom: 20px; font-size: 0.9rem; color: #666;">Validation in JS[cite: 2]</p>
+        
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" placeholder="Enter your full name">
+                <span id="nameError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Student Email</label>
+                <input type="email" id="email" placeholder="Enter your email">
+                <span id="emailError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="studentId">Student ID</label>
+                <input type="text" id="studentId" placeholder="Enter your student ID">
+                <span id="idError" class="error"></span>
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <div id="feedback"></div>
+
+        <div id="eventPass" class="pass-card hidden">
+            <h3>🎉 Event Pass Generated!</h3>
+            <p><strong>Name:</strong> <span id="passName"></span></p>
+            <p><strong>Student ID:</strong> <span id="passId"></span></p>
+            <p><strong>Pass Code:</strong> <span id="passCode"></span></p>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('registrationForm');
+        const feedback = document.getElementById('feedback');
+        const eventPass = document.getElementById('eventPass');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            document.getElementById('nameError').textContent = '';
+            document.getElementById('emailError').textContent = '';
+            document.getElementById('idError').textContent = '';
+            feedback.textContent = '';
+            eventPass.classList.add('hidden');
+
+    
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const studentId = document.getElementById('studentId').value.trim();
+
+            let isValid = true;
+
+
+            if (fullName === '') {
+                document.getElementById('nameError').textContent = 'Full name is required.';
+                isValid = false;
+            }
+
+        
+            const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+            if (email === '') {
+                document.getElementById('emailError').textContent = 'Email is required.';
+                isValid = false;
+            } else if (!emailPattern.test(email)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+                isValid = false;
+            }
+
+    
+            if (studentId === '') {
+                document.getElementById('idError').textContent = 'Student ID is required.';
+                isValid = false;
+            }
+
+        
+            if (isValid) {
+                feedback.style.color = '#3498db';
+                feedback.textContent = 'Validating details... Please wait.';
+
+        
+                setTimeout(() => {
+                    feedback.textContent = '';
+                    
+                    // Populate pass details
+                    document.getElementById('passName').textContent = fullName;
+                    document.getElementById('passId').textContent = studentId;
+                    document.getElementById('passCode').textContent = 'PASS-' + Math.floor(100000 + Math.random() * 900000);
+
+
+                    eventPass.classList.remove('hidden');
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+</html>
