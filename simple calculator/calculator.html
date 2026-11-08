@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Simple Calculator</h2>
+        <div class="subtitle">Introduction to JavaScript[cite: 13]</div>
+        
+        <p style="margin-bottom: 20px; font-size: 0.9rem; color: #555;">
+            In this project, you will create a simple calculator by using the variables and operators you learnt in class[cite: 13]. Time: about 15 minutes[cite: 13].
+        </p>
+
+        <div class="form-group">
+            <label for="num1">Enter First Number:</label>
+            <input type="number" id="num1" placeholder="e.g. 10">
+        </div>
+
+        <div class="form-group">
+            <label for="num2">Enter Second Number:</label>
+            <input type="number" id="num2" placeholder="e.g. 5">
+        </div>
+
+        <div class="btn-group">
+            <button onclick="calculate('+')">Add (+)</button>
+            <button onclick="calculate('-')">Subtract (-)</button>
+            <button onclick="calculate('*')">Multiply (*)</button>
+            <button onclick="calculate('/')">Divide (/)</button>
+        </div>
+
+        <div id="resultOutput" class="output hidden"></div>
+    </div>
+
+    <script>
+        
+        function calculate(operator) {
+            let val1 = parseFloat(document.getElementById('num1').value);
+            let val2 = parseFloat(document.getElementById('num2').value);
+            let resultOutput = document.getElementById('resultOutput');
+
+            if (isNaN(val1) || isNaN(val2)) {
+                resultOutput.style.borderColor = "#e74c3c";
+                resultOutput.style.color = "#c0392b";
+                resultOutput.textContent = "Please enter valid numbers in both fields.";
+                resultOutput.classList.remove('hidden');
+                return;
+            }
+
+            let result;
+            let symbol;
+
+           
+            if (operator === '+') {
+                result = val1 + val2;
+                symbol = '+';
+            } else if (operator === '-') {
+                result = val1 - val2;
+                symbol = '-';
+            } else if (operator === '*') {
+                result = val1 * val2;
+                symbol = '\u00d7';
+            } else if (operator === '/') {
+                if (val2 === 0) {
+                    resultOutput.style.borderColor = "#e74c3c";
+                    resultOutput.style.color = "#c0392b";
+                    resultOutput.textContent = "Error: Division by zero is not allowed.";
+                    resultOutput.classList.remove('hidden');
+                    return;
+                }
+                result = val1 / val2;
+                symbol = '\u00f7';
+            }
+
+            
+            resultOutput.style.borderColor = "#2980b9";
+            resultOutput.style.color = "#333";
+            resultOutput.textContent = `Result: ${val1} ${symbol} ${val2} = ${result}`;
+            resultOutput.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
