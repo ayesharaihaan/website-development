@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body class="bg-light">
+
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">🌊 My Ocean World</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#animals">Sea Animals</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#loading-section">Loading</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+    <div class="container my-5">
+        <div class="text-center mb-5">
+            <h1 class="text-primary fw-bold">My Ocean World</h1>
+            <h5 class="text-muted">Bootstrap Utilities - Part 2</h5>
+            <p class="text-secondary mt-2" style="max-width: 600px; margin: 0 auto;">
+                In this assignment, you will build an Ocean World webpage using Bootstrap[cite: 15]. You will add a navigation bar, show loading spinners, create sea-animal cards, and use pagination to browse more content[cite: 15].
+            </p>
+        </div>
+
+        
+        <div id="loading-section" class="card shadow-sm mb-5 p-4 text-center bg-white">
+            <h4 class="text-secondary mb-3">Loading Deep Sea Data...</h4>
+            <div class="d-flex justify-content-center align-items-center gap-3">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="spinner-grow text-info" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        
+        <h3 id="animals" class="text-dark mb-4">Featured Sea Animals</h3>
+        <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="image.jpg" class="card-img-top" alt="Sea Turtle" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Green Sea Turtle</h5>
+                        <p class="card-text text-muted">Graceful swimmers found in tropical and subtropical waters around the world.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="backgroundimage.jpg" class="card-img-top" alt="Clownfish" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Clownfish</h5>
+                        <p class="card-text text-muted">Vibrant orange fish known for their symbiotic relationship with sea anemones.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="https://images.unsplash.com/photo-1534043464590-39d657ba7feb?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Blue Whale" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Blue Whale</h5>
+                        <p class="card-text text-muted">The largest animal known to have ever existed, roaming the deep oceans.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <nav aria-label="Ocean content navigation">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>
