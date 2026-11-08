@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <body data-bs-spy="scroll" data-bs-target="#navbar-example" data-bs-offset="100" tabindex="0">
+
+    
+    <nav id="navbar-example" class="navbar navbar-expand-lg navbar-dark bg-success fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">🌴 My Jungle Explorer</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#carousel-section">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#canopy">Canopy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#wildlife">Wildlife</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#river">River</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+   
+    <section id="carousel-section" class="container mt-5 pt-4">
+        <h2 class="text-center text-success mb-3">Bootstrap Carousel and Scrollspy</h2>
+        <p class="text-center text-muted mb-4">In this assignment, you will build a Jungle Explorer webpage using Bootstrap[cite: 14]. You will create a carousel with jungle-themed slides, add carousel controls, and use Scrollspy navigation to highlight page sections as you scroll[cite: 14].</p>
+
+        <div id="jungleCarousel" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#jungleCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#jungleCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#jungleCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://static.vecteezy.com/vite/assets/photo-masthead-375-BoK_p8LG.webp">
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+                        <h5>Lush Green Canopy</h5>
+                        <p>Explore the dense and vibrant rainforest foliage.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.pinterest.com/pin/619456123721660825/" class="d-block w-100" alt="Wildlife">
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+                        <h5>Exotic Wildlife</h5>
+                        <p>Discover unique creatures in their natural habitat.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://picjumbo.com/free-photos/gorgeous/" class="d-block w-100" alt="Jungle River">
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+                        <h5>Winding Rivers</h5>
+                        <p>Navigate through mystical tropical waterways.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#jungleCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#jungleCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    
+    <div class="container mb-5">
+        <section id="canopy" class="border-bottom pb-4">
+            <h3 class="text-success">🌿 Jungle Canopy</h3>
+            <p>The canopy is the upper layer of the habitat formed by mature tree crowns, receiving direct sunlight and supporting a rich flora and fauna ecosystem.</p>
+        </section>
+
+        <section id="wildlife" class="border-bottom pb-4">
+            <h3 class="text-success">🐒 Exotic Wildlife</h3>
+            <p>From colorful toucans and tree frogs to stealthy jaguars, the jungle teems with incredible biodiversity waiting to be explored.</p>
+        </section>
+
+        <section id="river" class="pb-4">
+            <h3 class="text-success">🌊 Tropical Rivers</h3>
+            <p>Major river basins flow through the heart of the jungle, serving as vital lifelines and transportation routes for the entire ecosystem.</p>
+        </section>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
